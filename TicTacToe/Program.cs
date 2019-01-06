@@ -24,12 +24,28 @@ namespace TicTacToe
 
             do
             {
-              //Create board  
+                
+                if (player %2 != 0)
+                {
+                    Console.Write("Player 1, please enter a slot: ");
+                    int input = Int32.Parse(Console.ReadLine());
+                    if (board[input] != 'X' || board[input] != 'O')
+                    {
+                        board[input] = 'X';
+                        gameOver = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please enter a different slot");
+                        continue;
+                    }
+                    
+                }
+             
+                
                     updateBoard();
 
                 
-
-
 
             } while (gameOver == false);
 
