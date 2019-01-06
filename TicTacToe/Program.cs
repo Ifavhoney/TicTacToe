@@ -24,7 +24,7 @@ namespace TicTacToe
 
             do
             {
-                
+              //Create board  
                     updateBoard();
 
                 
