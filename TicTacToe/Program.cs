@@ -24,24 +24,10 @@ namespace TicTacToe
 
             do
             {
-                if (player % 2 != 0)
-                {
-
-                    Console.Write("Player 1, please select a slot: ");
-                    int input = Int32.Parse(Console.ReadLine());
-                    if (board[input].Equals("X") || board[input].Equals("O"))
-                    {
-                        Console.WriteLine("This slot has already been chosen");
-                        continue;
-                    }
-                    else
-                    {
-                        board[input] = 'X';
-                        gameOver = true;
-                    }
+                
                     updateBoard();
 
-                }
+                
 
 
 
