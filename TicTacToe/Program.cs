@@ -11,7 +11,7 @@ namespace TicTacToe
         static char[] board = { '0', '1', '2','3','4','5','6','7','8','9'};
         static int player = 1;
         static bool gameOver = false;
-        static int turn;
+        static int checkBoards;
 
 
         static void Main(string[] args)
@@ -20,19 +20,21 @@ namespace TicTacToe
             Console.WriteLine("Player 2 is by the Default O\n");
             Console.WriteLine("This is Your Current Board");
             updateBoard();
-
-
+            
             do
             {
                 
                 if (player %2 != 0)
                 {
                     Console.Write("Player 1, please enter a slot: ");
+                    board[0] = 'S';
                     int input = Int32.Parse(Console.ReadLine());
-                    if (board[input] != 'X' || board[input] != 'O')
+                    if (board[input] != 'X' && board[input] != 'O')
                     {
+                        
                         board[input] = 'X';
-                        gameOver = true;
+                        checkBoards++;
+                        player++;
                     }
                     else
                     {
@@ -41,13 +43,45 @@ namespace TicTacToe
                     }
                     
                 }
+                else
+                {
+                    Console.Write("Player 2, please enter a slot: ");
+                    int input = Int32.Parse(Console.ReadLine());
+                    if (board[input] != 'X' && board[input] != 'O')
+                    {
+                        board[input] = 'O';
+                        checkBoards++;
+                        player++;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please enter a different slot");
+                        continue;
+                    }
+                }
              
-                
-                    updateBoard();
+                 updateBoard();
+                             
 
-                
+            } while (gameChecker() == false);
 
-            } while (gameOver == false);
+        }
+
+       static bool gameChecker()
+        {
+            //Check if game is over
+            for (int i = 0; i < board.Length; i++)
+            {                            
+                //check if all slots are checked
+                if (checkBoards > 8)
+                {
+                    return gameOver = true;
+                }
+             
+            }
+            Console.WriteLine("Num of Missing Boards " + checkBoards);
+
+            return gameOver = false;
 
         }
 
