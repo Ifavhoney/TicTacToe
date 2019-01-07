@@ -221,17 +221,6 @@ namespace TicTacToe
                 if (checkBoards > 8)
                 {
                     Console.WriteLine("Draw!!");
-                    Console.WriteLine("Would You Like to Redo? Enter Y/N");
-                    string val = Console.ReadLine();
-                    if (val.ToUpper() == "Y")
-                    {
-                        //RESTARTS APPLICATION
-                        var fileName = System.Reflection.Assembly.GetExecutingAssembly().Location;
-                        System.Diagnostics.Process.Start(fileName);
-
-                        return gameOver = false;
-
-                    }
                     return gameOver = true;
                 }
                             
