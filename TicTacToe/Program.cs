@@ -5,7 +5,7 @@ namespace TicTacToe
 {
     class Program
     {
-        static char[] board = { '0', '1', '2','3','4','5','6','7','8','9'};
+        static char[] board = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
         static int player = 1;
         static bool gameOver = false;
         static int checkBoards;
@@ -18,7 +18,7 @@ namespace TicTacToe
             Console.WriteLine("This is Your Current Board");
             updateBoard();
             Console.WriteLine("");
-            
+
             do
             {
                 try
@@ -60,7 +60,8 @@ namespace TicTacToe
                     updateBoard();
 
 
-                }catch(FormatException e)
+                }
+                catch (FormatException e)
                 {
                     Console.WriteLine(e.Message + " - Numbers Only\n");
                     continue;
@@ -70,9 +71,9 @@ namespace TicTacToe
                 {
                     Console.WriteLine(e.Message + " - Enter Numbers 1 - 9\n");
                     continue;
-                
+
                 }
-               
+
 
 
 
@@ -122,7 +123,7 @@ namespace TicTacToe
 
                 //Vertical TOP Check P.1, P.2 
                 if ((board[1] == 'X' && board[4] == 'X' && board[7] == 'X') || (board[1] == 'O' && board[4] == 'O' && board[7] == 'O'))
-                { 
+                {
                     if (board[1] == 'X')
                     {
                         Console.WriteLine("Player 1 Wins!");
@@ -234,7 +235,7 @@ namespace TicTacToe
                     }
                     return gameOver = true;
                 }
-                            
+
             }
 
             return gameOver = false;
