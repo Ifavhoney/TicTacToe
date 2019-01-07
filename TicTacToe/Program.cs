@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿//Jason N'Guessan
+//Software Engineer
+using System;
 namespace TicTacToe
 {
     class Program
@@ -20,48 +17,67 @@ namespace TicTacToe
             Console.WriteLine("Player 2 is by the Default O\n");
             Console.WriteLine("This is Your Current Board");
             updateBoard();
-            
+            Console.WriteLine("");
             
             do
             {
+                try
+                {
+                    if (player % 2 != 0)
+                    {
+                        Console.Write("Player 1, please enter a slot: ");
+                        board[0] = 'S';
+                        int input = Int32.Parse(Console.ReadLine());
+                        if (board[input] != 'X' && board[input] != 'O' && input > 0)
+                        {
+                            board[input] = 'X';
+                            checkBoards++;
+                            player++;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Please enter a different slot\n");
+                            continue;
+                        }
+
+                    }
+                    else
+                    {
+                        Console.Write("Player 2, please enter a slot: ");
+                        int input = Int32.Parse(Console.ReadLine());
+                        if (board[input] != 'X' && board[input] != 'O' && input > 0)
+                        {
+                            board[input] = 'O';
+                            checkBoards++;
+                            player++;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Please enter a different slot\n");
+                            continue;
+                        }
+                    }
+                    updateBoard();
+
+
+                }catch(FormatException e)
+                {
+                    Console.WriteLine(e.Message + " - Numbers Only\n");
+                    continue;
+
+                }
+                catch (IndexOutOfRangeException e)
+                {
+                    Console.WriteLine(e.Message + " - Enter Numbers 1 - 9\n");
+                    continue;
                 
-                if (player %2 != 0)
-                {
-                    Console.Write("Player 1, please enter a slot: ");
-                    board[0] = 'S';
-                    int input = Int32.Parse(Console.ReadLine());
-                    if (board[input] != 'X' && board[input] != 'O')
-                    {
-                        board[input] = 'X';
-                        checkBoards++;
-                        player++;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Please enter a different slot");
-                        continue;
-                    }
-                    
                 }
-                else
-                {
-                    Console.Write("Player 2, please enter a slot: ");
-                    int input = Int32.Parse(Console.ReadLine());
-                    if (board[input] != 'X' && board[input] != 'O')
-                    {
-                        board[input] = 'O';
-                        checkBoards++;
-                        player++;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Please enter a different slot");
-                        continue;
-                    }
-                }
-             
-                 updateBoard();
-                             
+               
+
+
+
+
+
 
             } while (gameChecker() == false);
 
@@ -209,7 +225,7 @@ namespace TicTacToe
                     string val = Console.ReadLine();
                     if (val.ToUpper() == "Y")
                     {
-                        //Credits to Microsoft.msdn - RESTARTS APPLICATION
+                        //RESTARTS APPLICATION
                         var fileName = System.Reflection.Assembly.GetExecutingAssembly().Location;
                         System.Diagnostics.Process.Start(fileName);
 
